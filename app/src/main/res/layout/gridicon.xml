@@ -1,0 +1,30 @@
+<FrameLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridImage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center_horizontal">
+    <RelativeLayout android:layout_width="75dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/gridimage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/firstaid"
+            >
+        </ImageView>
+        <TextView
+
+            android:id="@+id/imageTick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Hello"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_below="@id/gridimage"
+            android:layout_centerHorizontal="true">
+        </TextView>
+    </RelativeLayout>
+</FrameLayout>

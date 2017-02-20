@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "652798746464",
+    "firebase_url": "https://sgn-pharmacy.firebaseio.com",
+    "project_id": "sgn-pharmacy",
+    "storage_bucket": "sgn-pharmacy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652798746464:android:439352a9c71bca8d",
+        "android_client_info": {
+          "package_name": "com.notadeveloper.app.sgnpharmacy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652798746464-nn6dd0hhlgibbd4rddc8n95sp87s2oqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.notadeveloper.app.sgnpharmacy",
+            "certificate_hash": "92A9A953EDC03304BE6F3C1F325EC3043D194EAC"
+          }
+        },
+        {
+          "client_id": "652798746464-7f0136l29rk3s2u748njjn11c2dqnsmq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.notadeveloper.app.sgnpharmacy",
+            "certificate_hash": "7FD5D7D17941850AEC07BF870E224DED72289A99"
+          }
+        },
+        {
+          "client_id": "652798746464-ifh96aiotelpf4cr24g23v6pckot5t4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhJLg1S6z9t7VyBpZQpihLonp7daLcUKk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652798746464-ifh96aiotelpf4cr24g23v6pckot5t4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652798746464:android:dd88aef4a924c92d",
+        "android_client_info": {
+          "package_name": "com.example.chirag.sgnadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652798746464-uoq8cm2ukg50q4gftf17v89q5phbiat8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chirag.sgnadmin",
+            "certificate_hash": "92A9A953EDC03304BE6F3C1F325EC3043D194EAC"
+          }
+        },
+        {
+          "client_id": "652798746464-ifh96aiotelpf4cr24g23v6pckot5t4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhJLg1S6z9t7VyBpZQpihLonp7daLcUKk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652798746464-ifh96aiotelpf4cr24g23v6pckot5t4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

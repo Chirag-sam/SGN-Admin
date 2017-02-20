@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">SGN Admin</string>
+    <string name="choosecat">Choose a Category</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string-array name="categories">
+        <item>CAP</item>
+        <item>CAPS</item>
+        <item>CREAM</item>
+        <item>DROPS</item>
+        <item>GEL</item>
+        <item>GENERAL</item>
+        <item>INJ</item>
+        <item>IV FLUIDS</item>
+        <item>LOTIONS</item>
+        <item>NEEDLE</item>
+        <item>OINTMENT</item>
+        <item>PACK</item>
+        <item>SOAP</item>
+        <item>SPRAY</item>
+        <item>SURGICAL</item>
+        <item>SYP</item>
+        <item>SYRUP</item>
+        <item>TAB</item>
+        <item>TABS</item>
+
+    </string-array>
+</resources>

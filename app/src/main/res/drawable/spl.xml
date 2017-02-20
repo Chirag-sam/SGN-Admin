@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<item android:drawable="@drawable/bckg"
+
+/>
+
+    <item
+
+        android:layout_weight="0.35"
+    >
+
+        <bitmap
+
+            android:gravity="center"
+            android:src="@drawable/hospital"
+
+        />
+    </item>
+
+</layer-list>
