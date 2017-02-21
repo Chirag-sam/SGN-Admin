@@ -108,7 +108,7 @@ public class DisplayProducts extends AppCompatActivity {
         setContentView(R.layout.activity_display_products);
         text= getResources().getStringArray(R.array.categories);
         cate=new ArrayList<>(Arrays.asList(text));
-
+        ButterKnife.bind(this);
 
 
 
