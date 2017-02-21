@@ -126,6 +126,7 @@
             android:layout_height="wrap_content"
             android:filterTouchesWhenObscured="true"
             android:text="Proceed!"
+            android:theme="@style/AccentButton"
             />
 
 

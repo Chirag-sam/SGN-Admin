@@ -27,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -119,6 +120,9 @@ public class DisplayProducts extends AppCompatActivity {
 
 
 
+
+
+
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.keepSynced(true);
         ref = mDatabase.child("products");
@@ -128,9 +132,10 @@ public class DisplayProducts extends AppCompatActivity {
             cat="Medicines";
 
         mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(mLayoutManager);
         setupadapter();
+
 
 
 
@@ -150,6 +155,10 @@ public class DisplayProducts extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.disptoolmenu, menu);
         final MenuItem item = menu.findItem(R.id.action_search);
 
+
+        String[] cities = getResources().getStringArray(R.array.categories);
+        final ArrayAdapter<String> catadapt = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, cities);
 
 
 
@@ -184,7 +193,20 @@ public class DisplayProducts extends AppCompatActivity {
                         ViewHolder.addcart.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
+                                Intent myIntent;
+                                Bundle bundle;
+                                myIntent = new Intent(DisplayProducts.this, edit.class);
+                                bundle = new Bundle();
+                                int to = catadapt.getPosition(product.getCategory());
+                                bundle.putInt("productid",product.getPid() );
+                                bundle.putString("name", product.getName());
+                                bundle.putString("cat", product.getCategory());
+                                bundle.putInt("catpos",to);
+                                bundle.putDouble("price",product.getPrice() );
+                                bundle.putInt("stock",product.getStock() );
+                                bundle.putString("pic",product.getPicture() );
+                                myIntent.putExtras(bundle);
+                                startActivity(myIntent);
 
                             }
 

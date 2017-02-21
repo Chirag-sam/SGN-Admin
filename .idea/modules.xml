@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SGN-Admin.iml" filepath="$PROJECT_DIR$/SGN-Admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SGNAdmin.iml" filepath="$PROJECT_DIR$/SGNAdmin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
