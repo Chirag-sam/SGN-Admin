@@ -193,20 +193,6 @@ public class DisplayProducts extends AppCompatActivity {
                         ViewHolder.addcart.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent myIntent;
-                                Bundle bundle;
-                                myIntent = new Intent(DisplayProducts.this, edit.class);
-                                bundle = new Bundle();
-                                int to = catadapt.getPosition(product.getCategory());
-                                bundle.putInt("productid",product.getPid() );
-                                bundle.putString("name", product.getName());
-                                bundle.putString("cat", product.getCategory());
-                                bundle.putInt("catpos",to);
-                                bundle.putDouble("price",product.getPrice() );
-                                bundle.putInt("stock",product.getStock() );
-                                bundle.putString("pic",product.getPicture() );
-                                myIntent.putExtras(bundle);
-                                startActivity(myIntent);
 
                             }
 

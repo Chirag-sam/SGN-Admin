@@ -2,13 +2,16 @@ package com.example.chirag.sgnadmin;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -100,6 +103,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductHolder>  {
         productHolder.prodname.setText(product.getName());
         productHolder.prodprice.setText("₹"+product.getPrice());
         productHolder.mfgname.setText(product.getCategory());
+        String[] cities = mContext.getResources().getStringArray(R.array.categories);
+        final ArrayAdapter<String> catadapt = new ArrayAdapter<>(mContext,
+                android.R.layout.simple_dropdown_item_1line, cities);
+        productHolder.addcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent;
+                Bundle bundle;
+                myIntent = new Intent(view.getContext(), edit.class);
+                bundle = new Bundle();
+                int to = catadapt.getPosition(product.getCategory());
+                bundle.putInt("productid",product.getPid() );
+                bundle.putString("name", product.getName());
+                bundle.putString("cat", product.getCategory());
+                bundle.putInt("catpos",to);
+                bundle.putDouble("price",product.getPrice() );
+                bundle.putInt("stock",product.getStock() );
+                bundle.putString("pic",product.getPicture() );
+                myIntent.putExtras(bundle);
+                view.getContext().startActivity(myIntent);
+            }
+        });
 
 
 
