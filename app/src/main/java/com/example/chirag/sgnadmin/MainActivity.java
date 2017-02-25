@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button add;
     private Button edit;
+    private Button orders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         add = (Button)findViewById(R.id.add);
         edit = (Button)findViewById(R.id.edit);
+        orders = (Button)findViewById(R.id.orders);
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, categories.class);
+                startActivity(i);
+            }
+        });
+        orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, orders.class);
                 startActivity(i);
             }
         });

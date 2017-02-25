@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:clickable="false"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true"
+
+    android:id="@+id/cv">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/prodname"
+            android:padding="10dp"
+            android:maxLines="2"
+            android:minLines="2"
+            android:text="Sample Text "
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/prodimg"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberofitems"
+            android:layout_below="@+id/prodname"
+            android:layout_toRightOf="@+id/prodimg"
+            android:text="Number Of Items = 20"
+            android:textSize="20dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:id="@+id/prodprice"
+            android:padding="6dp"
+            android:text="20 X ₹100 = ₹2000"
+            android:textSize="19dp"
+
+            android:layout_below="@+id/numberofitems"
+            android:layout_toRightOf="@+id/prodimg"
+            android:layout_toEndOf="@+id/prodimg"/>
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/prodimg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/catimg"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+
+            android:layout_alignRight="@+id/prodimg"
+            android:layout_alignBottom="@+id/prodimg"
+            android:background="@null"
+            />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

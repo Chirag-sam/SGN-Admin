@@ -24,19 +24,29 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:filterTouchesWhenObscured="true"
-    android:text="ADD"
+    android:text="ADD PRODUCTS"
     android:theme="@style/AccentButton"
     android:layout_alignParentBottom="true"
     android:layout_marginBottom="40dp"
     />
     <Button
-        android:id="@+id/edit"
+    android:id="@+id/edit"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:filterTouchesWhenObscured="true"
+    android:text="EDIT PRODUCTS"
+    android:theme="@style/AccentButton"
+    android:layout_above="@+id/add"
+    android:layout_marginBottom="20dp"
+    />
+    <Button
+        android:id="@+id/orders"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:filterTouchesWhenObscured="true"
-        android:text="EDIT"
+        android:text="ORDERS"
         android:theme="@style/AccentButton"
-        android:layout_above="@+id/add"
+        android:layout_above="@+id/edit"
         android:layout_marginBottom="20dp"
         />
 
