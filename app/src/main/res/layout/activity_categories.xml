@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
     android:gravity="center_horizontal"
-    tools:context=".categories">
+    tools:context=".DisplayCategories">
 
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"

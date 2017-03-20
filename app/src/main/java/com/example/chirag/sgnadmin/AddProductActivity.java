@@ -14,13 +14,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +30,7 @@ import com.google.firebase.storage.UploadTask;
 import com.mikelau.croperino.Croperino;
 import com.mikelau.croperino.CroperinoConfig;
 import com.mikelau.croperino.CroperinoFileUtil;
-public class add extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity {
 
     private ImageButton mProfile;
     private String photoUrl;
@@ -55,7 +52,7 @@ public class add extends AppCompatActivity {
 
 
         new CroperinoConfig("IMG_" + System.currentTimeMillis() + ".jpg", "/MikeLau/Pictures", Environment.getExternalStorageDirectory().getPath());
-        CroperinoFileUtil.setupDirectory(add.this);
+        CroperinoFileUtil.setupDirectory(AddProductActivity.this);
 
         mProfile = (ImageButton) findViewById(R.id.picture);
         final TextInputLayout idlt = (TextInputLayout)findViewById(R.id.idlt);
@@ -90,7 +87,7 @@ public class add extends AppCompatActivity {
                 }
                 else {
                     imagesRef = storageRef.child("images").child("picture").child(a);
-                    if (CroperinoFileUtil.verifyStoragePermissions(add.this)) {
+                    if (CroperinoFileUtil.verifyStoragePermissions(AddProductActivity.this)) {
                         prepareChooser();
                     }}
             }
@@ -150,7 +147,7 @@ public class add extends AppCompatActivity {
                     DatabaseReference mDatabase = ref.child("products").child(a);
                     Product p = new Product(Integer.parseInt(a), b, c,Double.parseDouble(f),Integer.parseInt(h),photoUrl);
                     mDatabase.setValue(p);
-                    Intent myIntent = new Intent(add.this, MainActivity.class);
+                    Intent myIntent = new Intent(AddProductActivity.this, MainActivity.class);
                     startActivity(myIntent);
                     finish();
 
@@ -163,11 +160,11 @@ public class add extends AppCompatActivity {
 
     }
     private void prepareChooser() {
-        Croperino.prepareChooser(add.this, "Change Picture", ContextCompat.getColor(add.this, android.R.color.background_dark));
+        Croperino.prepareChooser(AddProductActivity.this, "Change Picture", ContextCompat.getColor(AddProductActivity.this, android.R.color.background_dark));
     }
 
     private void prepareCamera() {
-        Croperino.prepareCamera(add.this);
+        Croperino.prepareCamera(AddProductActivity.this);
     }
 
     @Override
@@ -177,13 +174,13 @@ public class add extends AppCompatActivity {
         switch (requestCode) {
             case CroperinoConfig.REQUEST_TAKE_PHOTO:
                 if (resultCode == Activity.RESULT_OK) {
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), add.this, true, 1, 1, 0, 0);
+                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), AddProductActivity.this, true, 1, 1, 0, 0);
                 }
                 break;
             case CroperinoConfig.REQUEST_PICK_FILE:
                 if (resultCode == Activity.RESULT_OK) {
-                    CroperinoFileUtil.newGalleryFile(data, add.this);
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), add.this, true, 1, 1, 0, 0);
+                    CroperinoFileUtil.newGalleryFile(data, AddProductActivity.this);
+                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), AddProductActivity.this, true, 1, 1, 0, 0);
                 }
                 break;
             case CroperinoConfig.REQUEST_CROP_PHOTO:

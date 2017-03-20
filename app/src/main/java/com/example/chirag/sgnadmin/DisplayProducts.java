@@ -1,46 +1,20 @@
 package com.example.chirag.sgnadmin;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,8 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -58,13 +30,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-import static com.example.chirag.sgnadmin.categories.fromHtml;
 import static java.util.Comparator.comparing;
 
 
 
 public class DisplayProducts extends AppCompatActivity {
-    private FirebaseIndexRecyclerAdapter<Product, ProductHolder> mAdapter;
+    private FirebaseIndexRecyclerAdapter<Product, ProductAdapter.ProductHolder> mAdapter;
     private List<Product> pli = new ArrayList<>();
     private ProductAdapter p;
     String cat;
@@ -184,9 +155,9 @@ public class DisplayProducts extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                mAdapter = new FirebaseIndexRecyclerAdapter<Product, ProductHolder>(Product.class, R.layout.productcard, ProductHolder.class, ref.orderByChild("name").startAt(newText.toUpperCase()).endAt(newText.toUpperCase()+"\uf8ff"),ref) {
+                mAdapter = new FirebaseIndexRecyclerAdapter<Product,ProductAdapter.ProductHolder>(Product.class, R.layout.productcard, ProductAdapter.ProductHolder.class, ref.orderByChild("name").startAt(newText.toUpperCase()).endAt(newText.toUpperCase()+"\uf8ff"),ref) {
                     @Override
-                    public void populateViewHolder(ProductHolder ViewHolder, final Product product, int position) {
+                    public void populateViewHolder(ProductAdapter.ProductHolder ViewHolder, final Product product, int position) {
                         ViewHolder.prodname.setText(product.getName());
                         ViewHolder.prodprice.setText("₹"+product.getPrice());
                         ViewHolder.mfgname.setText(product.getCategory());

@@ -4,24 +4,22 @@ package com.example.chirag.sgnadmin;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-import com.example.chirag.sgnadmin.OrdersHolder;
-import com.example.chirag.sgnadmin.R;
-import com.example.chirag.sgnadmin.users;
 
 import java.util.List;
-
-import static com.example.chirag.sgnadmin.categories.fromHtml;
 
 /**
  * Created by Chirag on 25-Feb-17.
  */
 
-public class OrdersAdapter extends RecyclerView.Adapter <OrdersHolder> {
+public class OrdersAdapter extends RecyclerView.Adapter <OrdersAdapter.OrdersHolder> {
 
 
     private List<users.myorders> wList;
@@ -63,6 +61,29 @@ public class OrdersAdapter extends RecyclerView.Adapter <OrdersHolder> {
     @Override
     public int getItemCount() {
         return wList.size();
+    }
+    public static class OrdersHolder extends RecyclerView.ViewHolder {
+        TextView date;
+        TextView time;
+        TextView area;
+        TextView tap;
+        TextView orderid;
+        TextView price;
+        CardView cv;
+        CheckBox status;
+        public OrdersHolder(View itemView) {
+            super(itemView);
+            date = (TextView)itemView.findViewById(R.id.date);
+            time = (TextView)itemView.findViewById(R.id.time);
+            area = (TextView)itemView.findViewById(R.id.area);
+            orderid = (TextView)itemView.findViewById(R.id.orderid);
+            tap = (TextView)itemView.findViewById(R.id.tap);
+            price = (TextView)itemView.findViewById(R.id.price);
+            cv = (CardView)itemView.findViewById(R.id.cv);
+            status = (CheckBox)itemView.findViewById(R.id.status);
+
+
+        }
     }
 }
 

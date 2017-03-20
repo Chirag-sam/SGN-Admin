@@ -3,7 +3,7 @@ package com.example.chirag.sgnadmin;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class orders extends AppCompatActivity {
+public class OrdersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

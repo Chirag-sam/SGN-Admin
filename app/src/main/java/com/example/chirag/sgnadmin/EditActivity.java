@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,8 +23,11 @@ import android.widget.Spinner;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -34,7 +38,7 @@ import com.mikelau.croperino.CroperinoFileUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class edit extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
 
     private ImageButton mProfile;
     private String photoUrl;
@@ -43,7 +47,7 @@ public class edit extends AppCompatActivity {
     private StorageReference imagesRef;
 
     private DatabaseReference ref;
-
+    private Product p=new Product();
     private ArrayList<String> cate;
     private  String[] text={
             "CAP",
@@ -96,37 +100,6 @@ public class edit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-
-
-
-
-
-
-        Bundle b2 = getIntent().getExtras();
-        String nameb=b2.getString("name");
-        int prdidb=b2.getInt("productid");
-        String catb=b2.getString("cat");
-        String picb=b2.getString("pic");
-        int stockb=b2.getInt("stock");
-        double priceb = b2.getDouble("price");
-        int catpos = b2.getInt("catpos");
-
-
-
-        //FirebaseUser userau = FirebaseAuth.getInstance().getCurrentUser();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReferenceFromUrl("gs://sgn-pharmacy.appspot.com/");
-        ref= FirebaseDatabase.getInstance().getReference();
-
-
-
-        cate=new ArrayList<>(Arrays.asList(text));
-
-
-
-        new CroperinoConfig("IMG_" + System.currentTimeMillis() + ".jpg", "/MikeLau/Pictures", Environment.getExternalStorageDirectory().getPath());
-        CroperinoFileUtil.setupDirectory(edit.this);
-
         mProfile = (ImageButton) findViewById(R.id.picture);
         final TextInputLayout idlt = (TextInputLayout)findViewById(R.id.idlt);
         final EditText id=(EditText)findViewById(R.id.id);
@@ -134,11 +107,12 @@ public class edit extends AppCompatActivity {
         final EditText name=(EditText)findViewById(R.id.name);
         final TextInputLayout catlt = (TextInputLayout)findViewById(R.id.catlt);
         final Spinner cat=(Spinner)findViewById(R.id.cat);
-        String[] cities = getResources().getStringArray(R.array.categories);
+//        String[] cities = getResources().getStringArray(R.array.categories);
+//        final ArrayList<String> categories=new ArrayList<>(Arrays.asList(cities));
         final ArrayAdapter<String> catadapt = new ArrayAdapter<>(this,
-                android.R.layout.simple_dropdown_item_1line, cities);
+                android.R.layout.simple_dropdown_item_1line, text);
         cat.setAdapter(catadapt);
-
+        cate=new ArrayList<>(Arrays.asList(text));
         final TextInputLayout pricelt = (TextInputLayout)findViewById(R.id.pricelt);
         final EditText price=(EditText)findViewById(R.id.price);
 
@@ -146,30 +120,64 @@ public class edit extends AppCompatActivity {
         final EditText stock=(EditText)findViewById(R.id.stock);
 
 
-        String p = String.valueOf(priceb);
-        String pidd = String.valueOf(prdidb);
-        String piddd = String.valueOf(stockb);
-
-        id.setText(pidd);
-        name.setText(nameb);
-        price.setText(p);
-        stock.setText(piddd);
-        cat.setSelection(catpos);
-
-        if (picb!=null)
-        {   mProfile.setPadding(0,0,0,0);
-            Glide.with(edit.this).load(picb).into(mProfile);
-            int pos=cate.indexOf(catb);
-            mProfile.setImageResource(Imageid[pos]);
-        }
-        else {
 
 
-            int pos=cate.indexOf(catb);
-            mProfile.setPadding(50,50,50,50);
-            mProfile.setImageResource(Imageid[pos]);
 
-        }
+
+
+
+
+        Bundle b2 = getIntent().getExtras();
+
+        final int prdidb=b2.getInt("productid");
+
+
+        //FirebaseUser userau = FirebaseAuth.getInstance().getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReferenceFromUrl("gs://sgn-pharmacy.appspot.com/");
+        ref= FirebaseDatabase.getInstance().getReference();
+        ref.child("products").child(String.valueOf(prdidb)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                p=dataSnapshot.getValue(Product.class);
+                id.setText(String.valueOf(p.getPid()));
+                name.setText(p.getName());
+                price.setText(String.valueOf(p.getPrice()));
+                stock.setText(String.valueOf(p.getStock()));
+                cat.setSelection(cate.indexOf(p.getCategory()));
+                if (p.getPicture()!=null)
+                {   mProfile.setPadding(0,0,0,0);
+                    Glide.with(EditActivity.this).load(p.getPicture()).into(mProfile);
+                    int pos=cate.indexOf(p.getCategory());
+                    mProfile.setImageResource(Imageid[pos]);
+                }
+                else {
+
+
+                    int pos=cate.indexOf(p.getCategory());
+                    mProfile.setPadding(50,50,50,50);
+                    mProfile.setImageResource(Imageid[pos]);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+
+        new CroperinoConfig("IMG_" + System.currentTimeMillis() + ".jpg", "/MikeLau/Pictures", Environment.getExternalStorageDirectory().getPath());
+        CroperinoFileUtil.setupDirectory(EditActivity.this);
+
+
+
 
 
 
@@ -186,7 +194,7 @@ public class edit extends AppCompatActivity {
                 }
                 else {
                     imagesRef = storageRef.child("images").child("picture").child(a);
-                    if (CroperinoFileUtil.verifyStoragePermissions(edit.this)) {
+                    if (CroperinoFileUtil.verifyStoragePermissions(EditActivity.this)) {
                         prepareChooser();
                     }}
             }
@@ -244,12 +252,10 @@ public class edit extends AppCompatActivity {
                     focusView.requestFocus();
                 } else {
                     DatabaseReference mDatabase = ref.child("products");
-                    mDatabase.child(a).child("category").setValue(c);
-                    mDatabase.child(a).setValue(a);
-                    mDatabase.child(a).child("name").setValue(b);
-                    mDatabase.child(a).child("pid").setValue(a);
-                    mDatabase.child(a).child("price").setValue(f);
-                    mDatabase.child(a).child("stock").setValue(h);
+                    Product px=new Product(Integer.parseInt(a),b,c,Double.parseDouble(f),Integer.parseInt(h),null);
+                    ref.child("products").child(String.valueOf(prdidb)).setValue(null);
+                    mDatabase.child(a).setValue(px);
+
                     finish();
 
 
@@ -262,11 +268,11 @@ public class edit extends AppCompatActivity {
 
     }
     private void prepareChooser() {
-        Croperino.prepareChooser(edit.this, "Change Picture", ContextCompat.getColor(edit.this, android.R.color.background_dark));
+        Croperino.prepareChooser(EditActivity.this, "Change Picture", ContextCompat.getColor(EditActivity.this, android.R.color.background_dark));
     }
 
     private void prepareCamera() {
-        Croperino.prepareCamera(edit.this);
+        Croperino.prepareCamera(EditActivity.this);
     }
 
     @Override
@@ -276,13 +282,13 @@ public class edit extends AppCompatActivity {
         switch (requestCode) {
             case CroperinoConfig.REQUEST_TAKE_PHOTO:
                 if (resultCode == Activity.RESULT_OK) {
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), edit.this, true, 1, 1, 0, 0);
+                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), EditActivity.this, true, 1, 1, 0, 0);
                 }
                 break;
             case CroperinoConfig.REQUEST_PICK_FILE:
                 if (resultCode == Activity.RESULT_OK) {
-                    CroperinoFileUtil.newGalleryFile(data, edit.this);
-                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), edit.this, true, 1, 1, 0, 0);
+                    CroperinoFileUtil.newGalleryFile(data, EditActivity.this);
+                    Croperino.runCropImage(CroperinoFileUtil.getmFileTemp(), EditActivity.this, true, 1, 1, 0, 0);
                 }
                 break;
             case CroperinoConfig.REQUEST_CROP_PHOTO:

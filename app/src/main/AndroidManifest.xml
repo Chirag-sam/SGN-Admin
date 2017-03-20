@@ -22,11 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".add" />
-        <activity android:name=".edit" />
-        <activity android:name=".categories" />
+        <activity android:name=".AddProductActivity" />
+        <activity android:name=".EditActivity" />
+        <activity android:name=".DisplayCategories" />
         <activity android:name=".DisplayProducts" />
-        <activity android:name=".orders" />
+        <activity android:name=".OrdersActivity" />
         <activity android:name=".DetailedOrder"></activity>
     </application>
 

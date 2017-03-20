@@ -27,21 +27,21 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, add.class);
+                Intent i = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(i);
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, categories.class);
+                Intent i = new Intent(MainActivity.this, DisplayCategories.class);
                 startActivity(i);
             }
         });
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, orders.class);
+                Intent i = new Intent(MainActivity.this, OrdersActivity.class);
                 startActivity(i);
             }
         });

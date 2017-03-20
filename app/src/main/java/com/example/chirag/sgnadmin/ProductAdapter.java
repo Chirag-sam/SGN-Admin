@@ -1,28 +1,18 @@
 package com.example.chirag.sgnadmin;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +22,7 @@ import java.util.List;
  * Created by krsnv on 12-Feb-17.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductHolder>  {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder>  {
     private List<Product> wList;
     private Context mContext;
     private ArrayList<String> cate;
@@ -111,16 +101,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductHolder>  {
             public void onClick(View view) {
                 Intent myIntent;
                 Bundle bundle;
-                myIntent = new Intent(view.getContext(), edit.class);
+                myIntent = new Intent(view.getContext(), EditActivity.class);
                 bundle = new Bundle();
-                int to = catadapt.getPosition(product.getCategory());
                 bundle.putInt("productid",product.getPid() );
-                bundle.putString("name", product.getName());
-                bundle.putString("cat", product.getCategory());
-                bundle.putInt("catpos",to);
-                bundle.putDouble("price",product.getPrice() );
-                bundle.putInt("stock",product.getStock() );
-                bundle.putString("pic",product.getPicture() );
+
                 myIntent.putExtras(bundle);
                 view.getContext().startActivity(myIntent);
             }
@@ -156,6 +140,39 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductHolder>  {
     @Override
     public int getItemCount() {
         return wList.size();
+    }
+
+    public static class ProductHolder extends RecyclerView.ViewHolder  {
+        final TextView prodprice;
+
+        final TextView mfgname;
+        final TextView prodname;
+        final ImageView prodimg;
+        final ImageView catimg;
+        final Button addcart;
+
+
+
+
+        public ProductHolder(View itemView) {
+            super(itemView);
+
+
+            prodprice = (TextView) itemView.findViewById(R.id.prodprice);
+
+            mfgname = (TextView) itemView.findViewById(R.id.mfgname);
+            prodname = (TextView) itemView.findViewById(R.id.prodname);
+            prodimg = (ImageView) itemView.findViewById(R.id.prodimg);
+
+            catimg=(ImageView)itemView.findViewById(R.id.catimg);
+            addcart = (Button)itemView.findViewById(R.id.addcart);
+
+
+
+
+        }
+
+
     }
 
 }
