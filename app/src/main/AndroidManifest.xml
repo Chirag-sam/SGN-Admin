@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.chirag.sgnadmin">
+    package="com.notadeveloper.app.sgnadmin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -15,19 +15,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.notadeveloper.app.sgnadmin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddProductActivity" />
-        <activity android:name=".EditActivity" />
-        <activity android:name=".DisplayCategories" />
-        <activity android:name=".DisplayProducts" />
-        <activity android:name=".OrdersActivity" />
-        <activity android:name=".DetailedOrder"></activity>
+        <activity android:name="com.notadeveloper.app.sgnadmin.AddProductActivity" />
+        <activity android:name="com.notadeveloper.app.sgnadmin.EditActivity" />
+        <activity android:name="com.notadeveloper.app.sgnadmin.DisplayCategories" />
+        <activity android:name="com.notadeveloper.app.sgnadmin.DisplayProducts" />
+        <activity android:name="com.notadeveloper.app.sgnadmin.Cart">
+        </activity>
+        <activity android:name="com.notadeveloper.app.sgnadmin.Myorders">
+        </activity>
+        <activity android:name="com.notadeveloper.app.sgnadmin.DisplayPrescription"
+                  android:theme="@style/Slide">
+        </activity>
     </application>
 
 </manifest>

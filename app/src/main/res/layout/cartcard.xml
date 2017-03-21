@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+    card_view:contentPadding="5dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:clickable="false"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true"
+
+    android:id="@+id/cv1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:id="@+id/prodno"
+            android:layout_alignLeft="@+id/prodname"
+            android:text="* 1000"
+            android:textSize="16dp"
+            android:layout_below="@+id/prodname"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:textSize="20dp"
+            android:layout_marginRight="8dp"
+
+            android:layout_alignParentRight="true"
+            android:id="@+id/pricetext"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ₹5600"
+            android:layout_below="@+id/pricetext"
+            android:layout_alignRight="@+id/pricetext"
+            android:textSize="16dp"
+            android:id="@+id/rupees"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/prodname"
+            android:layout_marginLeft="4dp"
+            android:maxLines="2"
+            android:minLines="1"
+            android:text="Sampl "
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/img"
+            android:layout_toLeftOf="@+id/pricetext"
+            />
+        <ImageView android:layout_width="70dp"
+                   android:layout_height="70dp"
+                   android:id="@+id/img"
+                    android:layout_alignBottom="@+id/remove"
+                   android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true"
+        />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
